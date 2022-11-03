@@ -10,12 +10,16 @@ export default function Previous(props: any) {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
         height: "5%",
         width: "80%",
         padding: "2.5%",
-        borderColor: "#D3D3D3",
         borderRadius: 50,
+        backgroundColor: "white",
+        elevation: 10,
+        shadowColor: "#dddddd",
+        shadowOpacity: 1,
+        shadowRadius: 3,
+        shadowOffset: { width: 0, height: 0 }
     },
     text: {
         fontStyle: "normal",

@@ -7,20 +7,18 @@ const heart = require("../../assets/heart.png");
 const close = require("../../assets/close.png");
 
 export default function Suggestion(props: any) {
-    const [foodItem, setFoodItem] = useState("Rote Linsen-Kokos-Suppe");
 
-    function newFoodItem() {
-        // Request new food item or list...
-        setFoodItem("Test");
-    }
+    // Request new food items...
+    const foods = ["Rote Linsen-Kokos-Suppe", "Spinat mit Spiegelei", "Eierkuchen", "Kartoffelpuffer", "Fischstäbchen"];
+
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>FoodApp</Text>
-            <Swipe new={() => newFoodItem()}>foodItem</Swipe>
-            <View>
-                <Image style={styles.img} source={heart} />
-                <Image style={styles.img} source={close} />
+            <Swipe>{foods}</Swipe>
+            <View style={styles.gradeContainer}>
+                <Image style={styles.close} source={close} />
+                <Image style={styles.heart} source={heart} />
             </View>
         </View>
     );
@@ -32,12 +30,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     },
+    gradeContainer: {
+        flex: 1,
+        flexDirection: "row",
+        marginTop: "10%",
+    },
     header: {
+        marginTop: "20%",
+        marginBottom: "10%",
         fontSize: 24,
         fontWeight: "bold",
     },
-    img: {
-        width: 100,
-        height: 100,
+    close: {
+        width: 52,
+        height: 52,
+        margin: "10%",
+    },
+    heart: {
+        width: 60,
+        height: 60,
+        margin: "10%",
     }
 });

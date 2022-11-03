@@ -1,17 +1,25 @@
 
+import { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Previous from '../components/Previous';
 import RoundButton from '../components/RoundButton';
+import Suggestion from './Suggestion';
 export default function Home(props: any) {
+    const [suggest, setSuggest] = useState(false);
+
     // Replace with actual data
     const calories = 32412
     const previousSuggestions = ["Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
+
+    if (suggest) {
+        return <Suggestion></Suggestion>;
+    }
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>{calories.toLocaleString("de")}</Text>
             <Text style={styles.subHeader}>Total Calories</Text>
-            <RoundButton style={styles.button}>GO!</RoundButton>
+            <RoundButton style={styles.button} onTouchEnd={() => setSuggest(true)}>GO!</RoundButton>
             <Text style={styles.secondHeader}>Previous suggestged meals</Text>
             {previousSuggestions.map(item => <Previous style={styles.meals} key={Math.random()}>{item}</Previous>)}
         </View>

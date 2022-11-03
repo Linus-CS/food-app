@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default function RoundButton(props: any) {
     return (
-        <View style={{ ...styles.container, ...props.style }}>
+        <View onTouchEnd={() => props.onTouchEnd()} style={{ ...styles.container, ...props.style }}>
             <Text style={styles.text}>{props.children}</Text>
         </View >
     );

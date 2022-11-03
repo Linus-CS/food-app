@@ -13,7 +13,7 @@ export default function Discovery(props: any) {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Discovery</Text>
-            <ScrollView style={styles.scrollContainer}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <Category source={salat}>Salats</Category>
                 <Category source={pizza}>Pizza</Category>
                 <Category source={apple}>Fruits</Category>
@@ -27,16 +27,18 @@ export default function Discovery(props: any) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center"
     },
     header: {
+        textAlign: "center",
         fontWeight: "900",
         fontSize: 24,
-        margin: "20%",
+        marginTop: "15%",
+        marginBottom: "5%",
     },
     scrollContainer: {
         flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
+        justifyContent: "center",
     }
 });
