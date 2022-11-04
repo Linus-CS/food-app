@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default function Previous(props: any) {
     return (
-        <View style={{ ...styles.container, ...props.style }}>
-            <Text style={styles.text}>{props.children}</Text>
+        <View style={{ ...styles.container, ...props.style, backgroundColor: props.children[1] }}>
+            <Text style={styles.text}>{props.children[0]}</Text>
         </View>
     );
 }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     text: {
         fontStyle: "normal",
         fontSize: 16,
-        color: "#424242",
+        color: "white",
         fontWeight: "600",
         textAlign: "center"
     }

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Swipe from '../components/Swipe';
 
@@ -11,14 +11,17 @@ export default function Suggestion(props: any) {
     // Request new food items...
     const foods = ["Rote Linsen-Kokos-Suppe", "Spinat mit Spiegelei", "Eierkuchen", "Kartoffelpuffer", "Fischstäbchen"];
 
-
     return (
         <View style={styles.container}>
             <Text style={styles.header}>FoodApp</Text>
-            <Swipe>{foods}</Swipe>
+            <Swipe >{foods}</Swipe>
             <View style={styles.gradeContainer}>
-                <Image style={styles.close} source={close} />
-                <Image style={styles.heart} source={heart} />
+                <View style={styles.closeContainer}>
+                    <Image style={styles.close} source={close} />
+                </View>
+                <View style={styles.heartContainer}>
+                    <Image style={styles.heart} source={heart} />
+                </View>
             </View>
         </View>
     );
@@ -34,6 +37,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         marginTop: "10%",
+        justifyContent: "center",
+        alignItems: "center",
     },
     header: {
         marginTop: "20%",
@@ -41,14 +46,29 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold",
     },
+    closeContainer: {
+        backgroundColor: "#FFB8B8",
+        width: "20%",
+        aspectRatio: 1 / 1,
+        borderRadius: 100,
+        margin: "10%",
+    },
+    heartContainer: {
+        backgroundColor: "#B8FFB8",
+        width: "20%",
+        aspectRatio: 1 / 1,
+        borderRadius: 100,
+        margin: "10%",
+    },
     close: {
         width: 52,
         height: 52,
-        margin: "10%",
+        margin: "19%",
     },
     heart: {
         width: 60,
         height: 60,
-        margin: "10%",
+        marginVertical: "15%",
+        marginHorizontal: "13%",
     }
 });

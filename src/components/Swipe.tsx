@@ -8,7 +8,7 @@ export default function Swipe(props: any) {
     const [posX, setPosX] = useState(~0);
     const [isRunning, setIsRunning] = useState(false);
     const [foodId, setFoodId] = useState(0);
-    const animationValue = useRef(new Animated.Value(transform)).current;
+    const animationValue = useRef(new Animated.Value(0)).current;
 
     if (transform > 20 && !isRunning) {
         setIsRunning(true);
@@ -47,6 +47,7 @@ export default function Swipe(props: any) {
             }, 100)
         });
     }
+
     return (
         <Animated.View
             onTouchStart={(e) => setPosX(e.nativeEvent.locationX)}

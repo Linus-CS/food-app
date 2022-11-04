@@ -9,7 +9,7 @@ export default function Home(props: any) {
 
     // Replace with actual data
     const calories = 32412
-    const previousSuggestions = ["Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
+    const previousSuggestions = [["Spaghetti Bolognese", "#8AC926"], ["Diavolo Pizza", "#EE9B01"], ["Acai Bowl", "#E02B4F"], ["Klassischer Linseneintop", "#DA6A00"]];
 
     if (suggest) {
         return <Suggestion></Suggestion>;
