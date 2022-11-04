@@ -8,14 +8,15 @@ export default function Swipe(props: any) {
     const [posX, setPosX] = useState(~0);
     const [isRunning, setIsRunning] = useState(false);
     const [foodId, setFoodId] = useState(0);
-    const animationValue = useRef(new Animated.Value(0)).current;
+    const animateX = useRef(new Animated.Value(0)).current;
+    const animateY = useRef(new Animated.Value(0)).current;
 
-    if (transform > 20 && !isRunning) {
+    const animateFlyOut = (value: Animated.Value, to: number) => {
         setIsRunning(true);
         setPosX(~0);
         setTransform(0);
-        Animated.timing(animationValue, {
-            toValue: 1000,
+        Animated.timing(value, {
+            toValue: to,
             duration: 300,
             useNativeDriver: true
         }).start(() => {
@@ -23,29 +24,22 @@ export default function Swipe(props: any) {
                 if (foodId < props.children.length - 1) {
                     setFoodId(foodId + 1);
                 }
-                animationValue.setValue(0);
+                value.setValue(0);
                 setIsRunning(false);
             }, 100)
         });
+    };
+
+    if (transform > 20 && !isRunning) {
+        animateFlyOut(animateX, 1000);
     }
 
     if (transform < -20 && !isRunning) {
-        setIsRunning(true);
-        setPosX(~0);
-        setTransform(0);
-        Animated.timing(animationValue, {
-            toValue: -1000,
-            duration: 300,
-            useNativeDriver: true
-        }).start(() => {
-            setTimeout(() => {
-                if (foodId < props.children.length - 1) {
-                    setFoodId(foodId + 1);
-                }
-                animationValue.setValue(0);
-                setIsRunning(false);
-            }, 100)
-        });
+        animateFlyOut(animateX, -1000);
+    }
+
+    if (props.swipeUp && !isRunning) {
+        animateFlyOut(animateY, -1000);
     }
 
     return (
@@ -57,7 +51,7 @@ export default function Swipe(props: any) {
                 }
             }}
             onTouchEnd={() => setTransform(0)}
-            style={{ ...styles.container, transform: [{ rotate: `${transform}deg` }, { translateX: animationValue }] }}>
+            style={{ ...styles.container, transform: [{ rotate: `${transform}deg` }, { translateX: animateX }, { translateY: animateY }] }}>
             <Text style={styles.text}>{props.children[foodId]}</Text>
         </Animated.View >
     )

@@ -9,7 +9,7 @@ export default function Home(props: any) {
 
     // Replace with actual data
     const calories = 32412
-    const previousSuggestions = [["Spaghetti Bolognese", "#8AC926"], ["Diavolo Pizza", "#EE9B01"], ["Acai Bowl", "#E02B4F"], ["Klassischer Linseneintop", "#DA6A00"]];
+    const previousSuggestions = ["Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
 
     if (suggest) {
         return <Suggestion></Suggestion>;
@@ -21,8 +21,9 @@ export default function Home(props: any) {
             <Text style={styles.subHeader}>Total Calories</Text>
             <RoundButton style={styles.button} onTouchEnd={() => setSuggest(true)}>GO!</RoundButton>
             <Text style={styles.secondHeader}>Previous suggestged meals</Text>
-            {previousSuggestions.map(item => <Previous style={styles.meals} key={Math.random()}>{item}</Previous>)}
-        </View>
+            {previousSuggestions.map((item, index) => <Previous style={styles.meals} key={index} id={index} > {item}</Previous>)
+            }
+        </View >
     );
 }
 

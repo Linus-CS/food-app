@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 
 export default function Previous(props: any) {
+    const colors = ["#8AC926", "#EE9B01", "#E02B4F", "#DA6A00"];
+
     return (
-        <View style={{ ...styles.container, ...props.style, backgroundColor: props.children[1] }}>
-            <Text style={styles.text}>{props.children[0]}</Text>
+        <View style={{ ...styles.container, ...props.style, backgroundColor: colors[props.id] }}>
+            <Text style={styles.text}>{props.children}</Text>
         </View>
     );
 }

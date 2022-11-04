@@ -1,5 +1,6 @@
 
 
+import { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Swipe from '../components/Swipe';
 
@@ -7,19 +8,30 @@ const heart = require("../../assets/heart.png");
 const close = require("../../assets/close.png");
 
 export default function Suggestion(props: any) {
+    const [swipe, setSwipe] = useState(false);
 
     // Request new food items...
-    const foods = ["Rote Linsen-Kokos-Suppe", "Spinat mit Spiegelei", "Eierkuchen", "Kartoffelpuffer", "Fischstäbchen"];
+    const foods = ["Rote Linsen-Kokos-Suppe", "Spinat mit Spiegelei", "Eierkuchen", "Kartoffelpuffer", "Fischstäbchen", "Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>FoodApp</Text>
-            <Swipe >{foods}</Swipe>
+            <Swipe swipeUp={swipe}>{foods}</Swipe>
             <View style={styles.gradeContainer}>
-                <View style={styles.closeContainer}>
+                <View onTouchEnd={() => {
+                    setSwipe(true);
+                    setTimeout(() => {
+                        setSwipe(false);
+                    }, 100);
+                }} style={styles.closeContainer}>
                     <Image style={styles.close} source={close} />
                 </View>
-                <View style={styles.heartContainer}>
+                <View onTouchEnd={() => {
+                    setSwipe(true);
+                    setTimeout(() => {
+                        setSwipe(false);
+                    }, 200);
+                }} style={styles.heartContainer}>
                     <Image style={styles.heart} source={heart} />
                 </View>
             </View>

@@ -1,7 +1,6 @@
-import { Children, useState } from 'react';
+import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Nav from '../components/Nav';
-import { NavigationContext } from '../contexts/NavigationContext';
 
 
 export default function Navigator(props: { children: any, default: string }) {
@@ -22,7 +21,6 @@ export default function Navigator(props: { children: any, default: string }) {
             {getComponentByName(props.children, current)}
         </View>
     );
-
 }
 
 
