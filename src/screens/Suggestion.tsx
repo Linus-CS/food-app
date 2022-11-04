@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Swipe from '../components/Swipe';
+import { retrieveMeals } from '../misc/MockFoodService';
 
 const heart = require("../../assets/heart.png");
 const close = require("../../assets/close.png");
@@ -10,8 +11,8 @@ const close = require("../../assets/close.png");
 export default function Suggestion(props: any) {
     const [swipe, setSwipe] = useState(false);
 
-    // Request new food items...
-    const foods = ["Rote Linsen-Kokos-Suppe", "Spinat mit Spiegelei", "Eierkuchen", "Kartoffelpuffer", "Fischstäbchen", "Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
+    // Replace with actual service...
+    const foods = retrieveMeals();
 
     return (
         <View style={styles.container}>

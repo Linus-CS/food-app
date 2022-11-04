@@ -12,8 +12,7 @@ export default function Previous(props: any) {
 
 const styles = StyleSheet.create({
     container: {
-        height: "5%",
-        width: "80%",
+        height: "17%",
         padding: "2.5%",
         borderRadius: 50,
         backgroundColor: "white",

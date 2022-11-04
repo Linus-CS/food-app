@@ -1,15 +1,24 @@
 
-import { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Previous from '../components/Previous';
 import RoundButton from '../components/RoundButton';
 import Suggestion from './Suggestion';
+// import EncryptedStorage from 'react-native-encrypted-storage';
+
 export default function Home(props: any) {
     const [suggest, setSuggest] = useState(false);
 
-    // Replace with actual data
-    const calories = 32412
-    const previousSuggestions = ["Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"];
+    const [calories, setCalories] = useState(3215);
+    const [previousSuggestions, setPrevious] = useState(["Spaghetti Bolognese", "Diavolo Pizza", "Acai Bowl", "Klassischer Linseneintop"]);
+
+
+    // useEffect(() => {
+    //     (async () => {
+    //         setCalories(await retrieveLocal("calories"))
+    //         setPrevious(await retrieveLocal("previous_suggestions"))
+    //     })();
+    // }, []);
 
     if (suggest) {
         return <Suggestion></Suggestion>;
@@ -21,11 +30,23 @@ export default function Home(props: any) {
             <Text style={styles.subHeader}>Total Calories</Text>
             <RoundButton style={styles.button} onTouchEnd={() => setSuggest(true)}>GO!</RoundButton>
             <Text style={styles.secondHeader}>Previous suggestged meals</Text>
-            {previousSuggestions.map((item, index) => <Previous style={styles.meals} key={index} id={index} > {item}</Previous>)
-            }
+            <ScrollView style={{ width: "100%" }} contentContainerStyle={styles.scrollContainer}>
+                {previousSuggestions.map((item, index) => <Previous style={styles.meals} key={index} id={index} > {item}</Previous>)}
+            </ScrollView>
         </View >
     );
 }
+
+// async function retrieveLocal(name: string) {
+//     try {
+//         const value = await EncryptedStorage.getItem(name);
+//         if (value !== undefined) {
+//             return JSON.parse(value);
+//         }
+//     } catch (error) {
+//         console.log("Error while retrieving from local storage: ", error.code);
+//     }
+// }
 
 
 const styles = StyleSheet.create({
@@ -52,6 +73,10 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         marginTop: "15%",
         marginBottom: "7%",
+    },
+    scrollContainer: {
+        flex: 1,
+        alignItems: "center",
     },
     meals: {
         margin: "1%"
