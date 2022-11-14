@@ -6,10 +6,10 @@ import Discovery from './src/screens/Discovery';
 import Profile from './src/screens/Profile';
 import Settings from './src/screens/Settings';
 
-const home = require("./assets/home.png")
-const search = require("./assets/search.png")
-const user = require("./assets/user.png")
-const settings = require("./assets/settings.png")
+const home = require("./assets/home.png");
+const search = require("./assets/search.png");
+const user = require("./assets/user.png");
+const settings = require("./assets/settings.png");
 
 export default function App() {
   return (
